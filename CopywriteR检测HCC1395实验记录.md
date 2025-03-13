@@ -1,5 +1,3 @@
-
-
 创建conda环境
 
 ```markup
@@ -126,5 +124,22 @@ Execution halted
 Error in serialize(data, node$con) : ignoring SIGPIPE signal
 Calls: local ... .send -> <Anonymous> -> sendData.SOCKnode -> serialize
 Execution halted
+#本次分析将在 12 个 CPU 上运行。
+停止工作节点失败，错误原因：已达到允许的运行时间限制。
+错误：BiocParallel 出现错误
+0 个远程错误，任务索引 24 有未求值的错误和其他错误。
+  第一个远程错误：
+   > 在 serialize(data, node$con) 中出错：忽略 SIGPIPE 信号
+   调用栈：local ... .send -> <匿名函数> -> sendData.SOCKnode -> serialize
+   执行中止
+
+  > 在 serialize(data, node$con) 中出错：忽略 SIGPIPE 信号
+   调用栈：local ... .send -> <匿名函数> -> sendData.SOCKnode -> serialize
+   执行中止
+
+  > 在 serialize(data, node$con) 中出错：忽略 SIGPIPE 信号
+   调用栈：local ... .send -> <匿名函数> -> sendData.SOCKnode -> serialize
+   执行中止
 ```
 
+改成不保存中间文件试试：keep.intermediary.files = FALSE
